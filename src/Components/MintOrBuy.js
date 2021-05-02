@@ -125,7 +125,7 @@ Total Before Your Mint: {totalPrismMinted}
 Total After Your Mint: {totalPrismAfterMint}
 <br />
 <br />
-Amount Earned From Start in $ : {averagePercentageOfVolume.toFixed(4)}
+Potential Amount Earned if Minted From Beginning: ${averagePercentageOfVolume.toFixed(4)}
 <br />
 <br />
 Total Volume: {Number(prismTradeVolume).toFixed(4)}
