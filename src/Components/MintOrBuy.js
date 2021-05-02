@@ -116,7 +116,7 @@ const prismAmountToMint = Number(props.formData)
 
 <br />
 <br />
-Your Percentage of Total After Mint: {yourPercentOfTotalPrism}
+Your Percentage of Total After Mint: {(yourPercentOfTotalPrism * 100).toFixed(4)} %
 <br />
 <br />
 Total Before Your Mint: {totalPrismMinted}
