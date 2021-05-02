@@ -5,6 +5,9 @@ import { InMemoryCache}  from '@apollo/client/cache/inmemory/inMemoryCache'
 import { HttpLink } from '@apollo/client/link/http/HttpLink'
 import { useQuery } from '@apollo/client/react/hooks'
 import gql from 'graphql-tag'
+import Gecko from './CoinGecko'
+import Component1 from './Component1'
+
 //import { render } from '@testing-library/react'
 //import NameForm from './MintCalc'
 
@@ -74,7 +77,7 @@ const MintOrBuy = (props) => {
   const wethPriceInUSD = wethPriceData && wethPriceData.bundles[0].ethPrice
 
   const prismPriceInETH = prismPriceData && prismPriceData.tokens[0].derivedETH
-  const totalPrismMinted = prismPriceData && prismPriceData.tokens[0].totalSupply
+  //const totalPrismMinted = prismPriceData && prismPriceData.tokens[0].totalSupply
   const prismTradeVolume = prismPriceData && prismPriceData.tokens[0].untrackedVolumeUSD
 
   const buyPrismPrice = (parseFloat(prismPriceInETH) * parseFloat(wethPriceInUSD))
@@ -90,6 +93,7 @@ const MintOrBuy = (props) => {
   }  
 
 const prismAmountToMint = Number(props.formData)
+const geckoNumber = (props.geckoData)
 
  let mintAmount
  if (Number(prismAmountToMint) == "0") {
@@ -101,9 +105,9 @@ const prismAmountToMint = Number(props.formData)
  }
  
 
- const yourPercentOfTotalPrism = (prismAmountToMint/((Number(totalPrismMinted)+prismAmountToMint)))
+ const yourPercentOfTotalPrism = (prismAmountToMint/((Number(geckoNumber)+prismAmountToMint)))
 
- const totalPrismAfterMint = (Number(prismAmountToMint)+Number(totalPrismMinted))
+ const totalPrismAfterMint = (Number(prismAmountToMint)+Number(geckoNumber))
 
  const averagePercentageOfVolume = (yourPercentOfTotalPrism*(Number(prismTradeVolume)*0.0025))
 
@@ -114,12 +118,15 @@ const prismAmountToMint = Number(props.formData)
 
 <div>
 
+
+
+Total Supply: {geckoNumber}
 <br />
 <br />
 Your Percentage of Total After Mint: {(yourPercentOfTotalPrism * 100).toFixed(4)} %
 <br />
 <br />
-Total Before Your Mint: {totalPrismMinted}
+Total Before Your Mint: {geckoNumber}
 <br />
 <br />
 Total After Your Mint: {totalPrismAfterMint}
@@ -162,7 +169,8 @@ Cost to Buy PRISM:{' '}
 <h3>
 {Conclusion}
 </h3>
-   
+
+
       </div>
       
     </div>

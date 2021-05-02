@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import "../App.css";
 import Form from "./Form";
 import MintOrBuy from './MintOrBuy'
+import Gecko from './CoinGecko'
+
+
 class App1 extends Component {
   state = {
     fields: {
-        amount: 0
+        amount: 0,
+        geckoData:0
     }
+    
   };
 
   onChange = updatedValue => {
@@ -21,9 +26,8 @@ class App1 extends Component {
   render() {
     return (
       <div className="App">
-        <Form onChange={fields => this.onChange(fields)} />
         
-        <MintOrBuy formData={this.state.fields.amount} />
+        <Gecko />
       </div>
     );
   }
