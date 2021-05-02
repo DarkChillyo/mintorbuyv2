@@ -118,18 +118,15 @@ const geckoNumber = (props.geckoData)
 
 <div>
 
-
-
-Total Supply: {geckoNumber}
 <br />
 <br />
 Your Percentage of Total After Mint: {(yourPercentOfTotalPrism * 100).toFixed(4)} %
 <br />
 <br />
-Total Before Your Mint: {geckoNumber}
+Total Supply Before Your Mint: {geckoNumber}
 <br />
 <br />
-Total After Your Mint: {totalPrismAfterMint}
+Total Supply After Your Mint: {totalPrismAfterMint}
 <br />
 <br />
 Potential Amount Earned if Minted From Beginning: ${averagePercentageOfVolume.toFixed(4)}
