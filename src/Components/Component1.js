@@ -3,6 +3,7 @@ import "../App.css";
 import Form from "./Form";
 import MintOrBuy from './MintOrBuy'
 import Gecko from './CoinGecko'
+import Etherscan from './Etherscan'
 
 
 class App1 extends Component {
@@ -27,7 +28,7 @@ class App1 extends Component {
     return (
       <div className="App">
         
-        <Gecko />
+        <Etherscan />
       </div>
     );
   }
