@@ -4,6 +4,7 @@ import Form from "./Form";
 import MintOrBuy from './MintOrBuy'
 import Gecko from './CoinGecko'
 import Etherscan from './Etherscan'
+import {fetchBSCData} from './Covalent'
 
 
 class App1 extends Component {
@@ -29,6 +30,7 @@ class App1 extends Component {
       <div className="App">
         
         <Etherscan />
+        {fetchBSCData}
       </div>
     );
   }

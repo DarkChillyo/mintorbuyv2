@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import '../App.css'
 import { ApolloClient } from '@apollo/client/apollo-client.cjs'
 import { InMemoryCache}  from '@apollo/client/cache/inmemory/inMemoryCache'
@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/client/react/hooks'
 import gql from 'graphql-tag'
 import Gecko from './CoinGecko'
 import Component1 from './Component1'
+import {fetchBSCData} from './Covalent'
 
 //import { render } from '@testing-library/react'
 //import NameForm from './MintCalc'
@@ -84,15 +85,7 @@ const MintOrBuy = (props) => {
 
   const mintPrismPrice = ((ethPriceInUSD/pairTotalSupply)*0.000005)
 
-  let Conclusion
-  if (buyPrismPrice > mintPrismPrice) {
-    Conclusion = "Currently cheaper to Mint Prism over Buying"
-  }
-  else {
-    Conclusion ="Currently cheaper to Buy Prism over Minting"
-  }  
-
-const prismAmountToMint = Number(props.formData)
+ const prismAmountToMint = Number(props.formData)
 const geckoNumber = (props.geckoData)
 
  let mintAmount
@@ -111,8 +104,36 @@ const geckoNumber = (props.geckoData)
 
  const averagePercentageOfVolume = (yourPercentOfTotalPrism*(Number(prismTradeVolume)*0.0025))
 
+const [bscPrice, setBscPrice] = useState([]);
+
+
+
+const fetchBSCData = async () => {
+
+ 
+const res = await fetch(`https://api.pancakeswap.info/api/v2/tokens/0x4cf12dd46bab9afc94e049342fd75a9eaff5d096`,
+  { 'stale-while-revalidate': 'max-age=604800' }
+);
+const { data } = await res.json();
+console.log(data.price)
+setBscPrice(data.price)
+
+}
+fetchBSCData() 
+
+let Conclusion
+if (buyPrismPrice > mintPrismPrice && bscPrice) {
+  Conclusion = "Currently cheaper to Mint Prism over Buying"
+}
+else {
+  Conclusion ="Currently cheaper to Buy Prism over Minting"
+}  
+
+
 
   return (
+
+    
 
 
 
@@ -158,6 +179,12 @@ Cost to Buy PRISM:{' '}
   : '$' +
     // parse responses as floats and fix to 2 decimals
     ((mintAmount)*parseFloat(buyPrismPrice)).toFixed(4)}
+
+<br />
+<br />
+
+Cost to Buy bPrism {''}
+{'$' + parseFloat(bscPrice).toFixed(4)}
     
 
 
@@ -165,6 +192,7 @@ Cost to Buy PRISM:{' '}
 <br />
 <h3>
 {Conclusion}
+
 </h3>
 
 

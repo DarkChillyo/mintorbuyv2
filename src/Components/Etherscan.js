@@ -11,7 +11,7 @@ class Etherscan extends React.Component {
     }
     componentDidMount() {
 
-    fetch("https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=0xd46df541148932690b81092f600f35208afd4325&apikey=WJPF939PZUT1I27NQSKZKXHTIDH5EKTQC1")
+    fetch("https://https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=0xd46df541148932690b81092f600f35208afd4325&apikey=WJPF939PZUT1I27NQSKZKXHTIDH5EKTQC1")
     .then((response) => response.json())
     .then(data => {
         this.setState({ geckodata: data.result });
