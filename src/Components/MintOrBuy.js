@@ -122,11 +122,11 @@ setBscPrice(data.price)
 fetchBSCData() 
 
 let Conclusion
-if (buyPrismPrice > mintPrismPrice && bscPrice) {
-  Conclusion = "Currently cheaper to Mint Prism over Buying"
+if (mintPrismPrice > buyPrismPrice && bscPrice) {
+  Conclusion = "Currently cheaper to Buy Prism over Buying"
 }
 else {
-  Conclusion ="Currently cheaper to Buy Prism over Minting"
+  Conclusion ="Currently cheaper to Mint Prism over Minting"
 }  
 
 
